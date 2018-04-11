@@ -115,7 +115,7 @@ class Order(models.Model):
         ( 'payment', 'Payment Processing' ),
         ( 'sold', 'Finalized Sale' ),
     )
-    order_date = models.DateTimeField(null=True, blank=True)
+    order_date = models.DateTimeField(auto_now_add=True)
     name = models.TextField(blank=True, default="Shopping Cart")
     status = models.TextField(choices=STATUS_CHOICES, default='cart', db_index=True)
     total_price = models.DecimalField(max_digits=8, decimal_places=2, default=0) # max number is 999,999.99
@@ -201,7 +201,7 @@ class Order(models.Model):
             # recalculate just to be sure everything is updated
             self.recalculate()
             self.save()
-
+            items_bought = ''
             # check that all products are available
             for x in self.active_items():
                 if x.quantity > x.product.get_quantity():
@@ -224,7 +224,8 @@ class Order(models.Model):
             # set order status to sold and save the order
             self.status = 'sold'
             self.save()
-
+            literallykillme = 0
+            tax_total=0
             # update product quantities for BulkProducts
             for x in self.active_items():
                 if x.product.TITLE =='Bulk':
@@ -239,11 +240,23 @@ class Order(models.Model):
                 x.product.save()
                 x.save()
 
-            # yag = yagmail.SMTP('shopfomo.me@gmail.com', 'POOPonast1ck')
-            # contents = ['This is the body, and here is just text']
-            # subject = 'Order %s Confirmation' % self.id
-            # recipient = self.user.email
-            # yag.send(recipient, subject, contents)
+                literallykillme = literallykillme + 1
+
+                if len(self.active_items()) == 1:
+                    items_bought = str(x.product.name)
+                elif literallykillme == len(self.active_items()):
+                    items_bought = items_bought + 'and ' + str(x.product.name)
+                else:
+                    items_bought = items_bought + str(x.product.name) + ', '
+
+                # items_bought = items_bought + ', ' + x.product.name # fix beginning comma
+            tax_total= (self.total_price/107)*7
+            yag = yagmail.SMTP('shopfomo.me@gmail.com', 'POOPonast1ck')
+            # contents = 'Thank you for placing an order with FOMO today! Your Order Number is %s and contains %s. Your order has been placed on %s for a total of $%s including $%s sales tax.' % str(self.id), items_bought, str(self.order_date), str(self.total_price),
+            contents = 'Thank you for placing an order with FOMO today! Your cost is $%.2f and contains %s. Your Sales Tax was $%.2f. You ordered it on %s. Your Order is being shipped. Please allow 2-5 business days for arrival.' % ((self.total_price), str(items_bought), (tax_total), (self.order_date.strftime('%m/%d/%y')))
+            subject = 'Order %s Confirmation' % self.id
+            recipient = self.user.email
+            yag.send(recipient, subject, contents)
 
 class OrderItem(models.Model):
     '''A line item on an order'''
