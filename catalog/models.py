@@ -226,6 +226,7 @@ class Order(models.Model):
             self.save()
             literallykillme = 0
             tax_total=0
+            prod_total=0
             # update product quantities for BulkProducts
             for x in self.active_items():
                 if x.product.TITLE =='Bulk':
@@ -251,12 +252,17 @@ class Order(models.Model):
 
                 # items_bought = items_bought + ', ' + x.product.name # fix beginning comma
             tax_total= (self.total_price/107)*7
+            prod_total=self.total_price - tax_total
             yag = yagmail.SMTP('shopfomo.me@gmail.com', 'POOPonast1ck')
-            # contents = 'Thank you for placing an order with FOMO today! Your Order Number is %s and contains %s. Your order has been placed on %s for a total of $%s including $%s sales tax.' % str(self.id), items_bought, str(self.order_date), str(self.total_price),
-            contents = 'Thank you for placing an order with FOMO today! Your cost is $%.2f and contains %s. Your Sales Tax was $%.2f. You ordered it on %s. Your Order is being shipped. Please allow 2-5 business days for arrival.' % ((self.total_price), str(items_bought), (tax_total), (self.order_date.strftime('%m/%d/%y')))
+            content1 = 'Thank you for placing an order with FOMO on %s!' % ((self.order_date.strftime('%m/%d/%y')))
+            empty= ''
+            content2 = 'Your %s will be shipped today. Please allow 2-5 business days for arrival.' % items_bought
+            content3 = 'Your items totaled $%.2f, with a $%.2f sales tax, your card was charged $%.2f.' % ((prod_total), (tax_total), (self.total_price))
+            # contents = 'Thank you for placing an order with FOMO on %s! Your %s will be shipped today. Please allow 2-5 business days for arrival. Your items totaled $%.2f, with a $%.2f sales tax, your card was charged $%.2f.' % ((self.order_date.strftime('%m/%d/%y'), items_bought, (prod_total), (tax_total), (self.total_price) ))
             subject = 'Order %s Confirmation' % self.id
             recipient = self.user.email
-            yag.send(recipient, subject, contents)
+            yag.send(recipient, subject, [content1, empty, content2, empty, content3])
+            # yag.send(recipient, subject, contents)
 
 class OrderItem(models.Model):
     '''A line item on an order'''

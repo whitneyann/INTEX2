@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="${ STATIC_URL }homepage/media/bootstrap3/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="${ STATIC_URL }homepage/media/bootstrap3/css/bootstrap-theme.min.css"/>
     <link href='https://fonts.googleapis.com/css?family=Amatic SC' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Cherry Swash' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
 
@@ -60,7 +61,8 @@
                <ul class="nav navbar-nav navbar-right">
                     %if request.user.is_authenticated:
                    <li class=" ${ 'active' if request.dmp.page == 'cart' else '' }">
-                       <a href="/catalog/cart">
+                       <a href="/catalog/cart" class= "mypad" style ="  padding-top: 0px;
+                         padding-bottom: 0px;">
 
                                %if cmod.Order.objects.filter(user = request.user,status='cart').first() is not None:
                                    ${cmod.Order.objects.filter(user = request.user,status='cart').first().num_items()}
@@ -69,7 +71,7 @@
 
                    </li>
                         <li class="dropdown">
-                           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                           <a class="dropdown-toggle, mypad" data-toggle="dropdown" href="#">
                                Welcome ${request.user.first_name} ${request.user.last_name}
                            <span class="caret"></span></a>
                            <ul class="dropdown-menu">
@@ -87,28 +89,35 @@
     </nav>
 
 
+    <%block name="header">
+
+
+    </%block>
+
+
 </header>
 
 <main>
 
-    <div id="top">
+  <div class="container">
+    <div class="row">
         <%block name="top_center">
             <!--Page Title-->
         </%block>
     </div>
 
-    <div id="middle">
-        <div id="left">
+    <div id="middle" class="row">
+        <div id="left" class="col col-md-3 col-sm-3 col-xs-3">
             <%block name="content_left"></%block>
         </div>
 
         <div id="center">
-            <div id="content">
+            <div id="content" class="col col-md-6 col-sm-6 col-xs-6">
             <%block name="content_center"></%block>
             </div>
         </div>
 
-        <div id="right">
+        <div id="right" class="col col-md-3 col-sm-3 col-xs-3">
             <%block name="content_right"></%block>
         </div>
     </div>
@@ -116,12 +125,15 @@
     <div id="bottom">
         <%block name="bottom"></%block>
     </div>
+  </div>
 
 </main>
 
 <div class="text-center">
     <footer>
     <%block name="footer">
+        <br />
+        <br />
         <%! from datetime import datetime %>
         &copy; Copyright ${ datetime.now().year}. All rights reserved.
     </%block>

@@ -1,44 +1,72 @@
 <%inherit file="app_base.html" />
 
 <%block name = "skip">
-</%block>
     <a href="#content" class="skip">Skip to content</a>
-<%block name="top_center">
-<div class="row">
-        <img class="img-responsive" src="${ STATIC_URL }homepage/media/Images/piano3.jpg" alt="Black Piano"/>
-        <div class="title">
-            <a name="main-content" tabindex="-1"></a>
-            <h1>F.O.M.O.</h1>
-            <a href="/catalog/" id="shop" type="button" class="btn btn-large btn-inverse">Shop</a><br/><br/>
-        </div>
+</%block>
 
-</div>
+<%block name="header">
+## <div class="row">
+##         <img class="img-responsive" src="${ STATIC_URL }homepage/media/Images/piano3.jpg" alt="Black Piano"/>
+##         <div class="title">
+##             <a name="main-content" tabindex="-1"></a>
+##             <h1>F.O.M.O.</h1>
+##             <a href="/catalog/" id="shop" type="button" class="btn btn-large btn-inverse">Shop</a><br/><br/>
+##         </div>
+##
+## </div>
+  <div class="header">
+    <h1>Family Oriented Music Organization</h1>
+    <p>
+      <a href="/catalog/" class="btn btn-success btn-lg" role="button">Shop Now</a></button>
+    </p>
+  </div>
 
 </%block>
 
 
 
 <%block name="content_right">
-     <img id="social" src="${ STATIC_URL }homepage/media/Images/social.png" alt="Social Media Icons"/>
+     ## <img id="social" src="${ STATIC_URL }homepage/media/Images/social.png" alt="Social Media Icons"/>
+    <div class="center">
+        <h2>Headphones</h2>
+        <img src="${STATIC_URL}homepage/media/Images/guitar.jpg" width=100% height=200px alt="heart and headaphone graphic"/>
+
+        <br /><br />
+        <button type="button" class="btn btn-primary">Quick Link</button>
+    </div>
+</%block>
+
+<%block name="content_left">
+<div class="center">
+    <h2>Headphones</h2>
+    <img src="${STATIC_URL}homepage/media/Images/headphones.jpg" width=100% height=200px alt="heart and headaphone graphic"/>
+
+    <br /><br />
+    <button type="button" class="btn btn-primary">Quick Link</button>
+</div>
 </%block>
 
 <%block name="content_center">
-<div id="content">
-    <h2>Music Rentals</h2>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore</br>
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea com</br>
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</br>
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-</div>
+## <div id="content">
+##     <h2>Music Rentals</h2>
+##     <p>
+##         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore</br>
+##         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea com</br>
+##         consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</br>
+##         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+##     </p>
+## </div>
+    <div class="center">
+        <h2>Sheet Music</h2>
+        ## <img src="${STATIC_URL}homepage/media/headphones.jpg" width=33% />
+        <img src="${STATIC_URL}homepage/media/Images/sheetmusic.jpg" width=75% height=200px alt="Sheet music graphic"/>
+        ## <img src="${STATIC_URL}homepage/media/guitar.jpg" width=33% />
 
+        <br /><br />
+        <button type="button" class="btn btn-primary">Quick Link</button>
+    </div>
 
-    </br>
-    </br>
-    </br>
+    ## </br>
+    ## </br>
+    ## </br>
 </%block>
-
-
-
-

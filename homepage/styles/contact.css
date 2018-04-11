@@ -1,0 +1,34 @@
+.header{
+  background-color: #A37B73;
+  text-align: center;
+  min-height: 100px;
+  vertical-align: middle;
+}
+
+
+.top{
+  background-color: #87BC5C;
+  min-height:50px;
+}
+.center{
+  background-color: #E9D985;
+  min-height: 600px;
+  text-align: center;
+}
+
+.left{
+  background-color: #DB7F67;
+  height: 600px;
+}
+
+.right
+{
+  background-color: #3F292B;
+  min-height: 600px;
+}
+
+.footer{
+  background-color: #C8BFC7;
+  min-height: 100px;
+  text-align: center;
+}

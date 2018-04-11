@@ -1,71 +1,44 @@
-h4.utc-time {
-    color: #AA3333;
+.header{
+  background-image: url("/static/homepage/media/piano_wallpaper.jpg");
+  background-size: cover;
+  height:600px;
 }
 
-#top{
-    margin: 0px;
-    border-bottom: Black;
-
+header h1{
+  text-align: left;
+  padding-top: 10%;
+  padding-left: 12%;
+  margin: 0px;
 }
 
-h1{
-    color: White;
-    font-size: 100px;
+header p{
+  text-align: left;
+  padding-top: 5%;
+  padding-left: 28%;
 }
 
-.title {
-    position: absolute;
-    top: 22%;
-    left: 200px;
+.center{
+  text-align: center;
+  background-color: white;
 }
 
-#center{
-    background: white;
-    margin-right: 550px;
-    margin-left: 50px;
+img{
+
+  padding: 10px;
 }
 
-#left{
-    background: white;
-    width: 50px;
+.btn-lg{
+  background: black;
+  color: #87bc5c;
+  /* padding-top: 20px;
+  padding-bottom: 20px; */
+  /* -webkit-transform:scale(0.5,2); */
 }
 
-#right{
-    background: white;
-    width: 450px;
-    margin-right: 10px;
-    margin-left: 50px;
-
-}
-
-#social{
-    width: 70%;
-    text-align: center;
-}
-
-#shop{
-    position: absolute;
-    left: 30%;
-    width: 135px;
-    height: 45px;
-    border-color: orange;
-    color: orange;
-    font-weight: bold;
-    font-size: 18px;
-    background-color: black;
-}
-
-p{
-    font-size: 16px;
-    color: #141414;
-}
-
-h2{
-    color: #141414;
-}
-
-.navbar-inverse{
+.navbar {
     border-radius: 0px;
 }
 
-
+h4.utc-time {
+    color: #AA3333;
+}
