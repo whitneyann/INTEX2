@@ -1,0 +1,42 @@
+.mainpic{
+  width: 45%;
+  margin-left: 20px;
+  border: solid 2px black;
+}
+
+.smallpic{
+  width: 100%;
+  border: solid 1px gray;
+  margin-bottom: 5px;
+}
+
+.pictures{
+  float:left;
+  width:10%;
+}
+
+h1{
+  font-family: fantasy;
+  color:#87BC5C;
+  /* color: #A37B73; */
+}
+
+.desc{
+  width:35%;
+  float:right;
+}
+
+p{
+  float:right;
+}
+
+.menu{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.menu_hover > li:hover{
+  font-size: 20px;
+  font-weight: bold;
+
+}

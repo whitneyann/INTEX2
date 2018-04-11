@@ -1,0 +1,17 @@
+<%inherit file="/homepage/templates/base.htm" />
+
+
+<%block name="menu">
+
+</%block>
+
+
+<%block name="nav_main">
+
+       <li class="${ 'active' if request.dmp.page == 'index' else '' }"><a href="/">Home</a></li>
+       <li class=" ${ 'active' if request.dmp.page == 'about' else '' }"><a href="/about">About Us</a></li>
+       <li class=" ${'active' if request.dmp.page == 'faq' else '' }"><a href="/faq">FAQ</a></li>
+       <li class=" ${ 'active' if request.dmp.page == 'contact' else '' }"><a href="/contact">Contact</a></li>
+       <li class=" ${ 'active' if request.dmp.page == 'terms' else '' }"><a href="/terms">Terms</a></li>
+       <li class=" ${ 'active' if request.dmp.page == 'product' else '' }"><a href="/catalog/product/">Product</a></li>
+</%block>

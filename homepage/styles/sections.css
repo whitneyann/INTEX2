@@ -1,0 +1,37 @@
+#maintenance{
+    background-color: red;
+    color: white;
+}
+
+#top{
+    background-color: grey;
+    height: 150px;
+}
+
+#left{
+    background-color: #1689b9;
+    height: 350px;
+}
+
+#center{
+    background-color: #D5DBDB;
+    height: 350px;
+}
+
+#right{
+    background-color: #73C6B6;
+    height: 350px;
+}
+
+#bottom{
+    background-color: #9180ac;
+    height: 150px;
+}
+
+h1{
+margin-top: 0;
+font-size: 20px;
+color: white;
+}
+
+

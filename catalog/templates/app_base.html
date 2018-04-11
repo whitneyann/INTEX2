@@ -1,0 +1,107 @@
+<%inherit file="/homepage/templates/base.htm" />
+<%!from catalog import models as cmod%>
+
+
+<%block name="menu">
+
+</%block>
+
+
+<%block name="nav_main">
+
+       <li class = "nav item ${ 'active' if request.dmp.page == 'index' and request.dmp.app == 'homepage' else ''}"><a href="/index/">Home</a></li>
+       <li class = "nav item ${ 'active' if request.dmp.page == 'index' and request.dmp.app == 'catalog' else ''}"><a href="/catalog/">Catalog</a></li>
+       <li class=" ${ 'active' if request.dmp.page == 'about' else '' }"><a href="/about">About Us</a></li>
+       <li class=" ${'active' if request.dmp.page == 'faq' else '' }"><a href="/faq">FAQ</a></li>
+       <li class=" ${ 'active' if request.dmp.page == 'contact' else '' }"><a href="/contact">Contact</a></li>
+       <li class=" ${ 'active' if request.dmp.page == 'terms' else '' }"><a href="/terms">Terms</a></li>
+
+</%block>
+
+
+<%block name="content_left">
+</br>
+</br>
+## <ul id="category_list" class="nav  nav-pills nav-stacked">
+##         <li>
+##             <a href="/catalog/index/" type="button"
+##                class="btn btn-link nav-item category_nav ${'on' if name == 'All Products' else 'off'}">All
+##                 Products</a>
+##         </li>
+##         %for c in cmod.Category.objects.all():
+##             <li>
+##
+##                 <a id="but" href="/catalog/index/${c.id}" type="button"
+##                    class="btn btn-link nav-item category_nav ${'on' if c.name == name else 'off'}">${c.name}</a>
+##             </li>
+##         % endfor
+##     </ul>
+<ul class="menu_hover">
+        <li>
+            <a href="/catalog/index/" class="${'menu' if name == 'All Products' else 'off'}">All
+                Products</a>
+        </li>
+        %for c in cmod.Category.objects.all():
+            <li>
+
+                <a id="but" href="/catalog/index/${c.id}"
+                   class="${'menu' if c.name == name else 'off'}">${c.name}</a>
+            </li>
+        % endfor
+    </ul>
+## <ul class = 'menu_hover'>
+##   <!-- ## <li><a class= "menu" href= '/catalog/index/'>All Products</a></li> -->
+##   <li>
+##   <a class = '${'menu' if name == 'All Products' else ''}' href="/catalog/index/0/">All Products</a>
+##   </li>
+##   <%! from catalog import models as cmod %>
+##   % for Category in cmod.Category.objects.all():
+##     <li><a class = '${'menu' if name == Category.name else ''}' href= '/catalog/index/${Category.id}/' >${Category.name}</a></li>
+##
+##   % endfor
+## </ul>
+
+    <!--<ul id="category_list">-->
+        <!--<li><a  href="/catalog/index/0/">All Products</a></li>-->
+        <!--%for c in categoryList:-->
+            <!--<li><a id="name" href="/catalog/index/${c.id}/">${c.name}</a></li>-->
+        <!--%endfor-->
+    <!--</ul>-->
+</%block>
+
+
+<%block name="content_right">
+</br>
+    ## <h3>Recently Viewed</h3>
+    ##     <%
+    ##         if request.dmp.page == 'details':
+    ##             myList = request.last_five[1:6]
+    ##         else:
+    ##             myList = request.last_five[0:5]
+    ##     %>
+    ##     <ol id='thumbnailsRight'>
+    ##          %for h in myList:
+    ##             <a href="/catalog/details/${h.id}/"><li class ='rightimage' alt=""><img src='${h.image_url()}'></li></a>
+    ##             <p>${h.name}</p>
+    ##          %endfor
+    ##      </ol>
+         <h2 class="recent">Recently Viewed:</h2>
+   <ul>
+     <%
+       if request.dmp.page == 'details':
+         myList = request.last_five[1:6]
+       else:
+         myList = request.last_five[0:5]
+     %>
+     %for pic in myList:
+         <a href="/catalog/details/${pic.id}">
+           <li>
+             <img src= '${pic.image_url()}' class='thumb' alt= '${pic.name}'/>
+             <div class= proName>
+               ${pic.name}
+             </div>
+           </li>
+         </a>
+     %endfor
+   </ul>
+</%block>

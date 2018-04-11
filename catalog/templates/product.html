@@ -1,0 +1,63 @@
+<%inherit file="app_base.html" />
+
+
+<%block name="top_center">
+<h2>Product List</h2>
+</%block>
+
+
+<%block name="content_center">
+
+
+<div class="container">
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Category</th>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        % for p in productList:
+        <tr>
+            <td>
+                ${p.category.name}
+            </td>
+            <td>
+                ${p.__class__.__name__}
+            </td>
+            <td>
+                ${p.name}
+            </td>
+            <td>
+                ${p.price}
+            </td>
+            <td>
+                %if hasattr(p, 'quantity'):
+                ${p.quantity}
+                %else:
+                    1
+                %endif
+            </td>
+            <td>
+                <a href="/manager/edit/${p.id}/" >Edit </a> | <a href="/manager/delete/${p.id}/" >Delete</a>
+            </td>
+        </tr>
+        % endfor
+
+        </tbody>
+    </table>
+</div>
+
+<div class="text-center">
+    <a href="/manager/create/" class="btn btn-info" role="button">Create Product</a>
+
+</div>
+
+
+</%block>

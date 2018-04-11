@@ -1,0 +1,29 @@
+<%inherit file="app_base.html" />
+<%! from catalog import models as cmod%>
+
+<%block name="top_center">
+<h2 id="shopTitle">Shopping Cart</h2>
+</%block>
+
+
+
+<%block name = "content_center">
+    <h3>Total Price: $${ totalPrice }</h3>
+
+   <%namespace name="fl" module="formlib.tags"/>
+    <%fl:render>
+  <div class="text-center">
+    <script
+        src="https://checkout.stripe.com/checkout.js"
+        class="stripe-button"
+        data-key="${settings.STRIPE_PUBLIC_KEY}"
+        data-amount="${int(cart.total_price * 100)}"
+        data-description="Please Enter Your Payment Information"
+        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-local="auto"
+        data-label="Pay Now">
+    </script>
+
+  </div>
+</%fl:render>
+</%block>

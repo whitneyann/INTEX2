@@ -1,0 +1,32 @@
+<%inherit file="base_ajax.htm" />
+
+<%block name="content">
+
+    ## <ul class="product_list">
+    ##     % for s in products:
+    ##     <li>
+    ##         <div class="price">${s.price}</div>
+    ##         <div class="pics"><a href="/catalog/details/${s.id}/"><img src=${s.image_url()}></a></div>
+    ##         <div class = "name"><a href="#">${s.name}</a></div>
+    ##     </li>
+    ##     %endfor
+    ## </ul>
+    <ul id="product_list">
+      % for Product in products:
+        <a href="/catalog/details/${Product.id}">
+          <li>
+            <img src= "${Product.image_url()}" />
+            <div class= proName>
+              ${Product.name}
+              <br />
+              ${Product.TITLE}
+            </div>
+            <div class= price>
+              ${Product.price}
+            </div>
+          </li>
+        </a>
+      % endfor
+    </ul>
+
+</%block>

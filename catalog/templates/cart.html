@@ -1,0 +1,61 @@
+<%inherit file="app_base.html" />
+<%! from catalog import models as cmod%>
+
+<%block name="top_center">
+<h2 id="shopTitle">Shopping Cart</h2>
+</%block>
+
+
+<%block name="content_center">
+
+<div class="container">
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Extended</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        % for c in items:
+        <tr>
+            <td>
+                ${c.product.name}
+            </td>
+            <td>
+                ${c.quantity}
+            </td>
+            <td>
+                ${c.price}
+            </td>
+            <td>
+                ${c.extended}
+            </td>
+            <td>
+               <a href="/catalog/deleteitem/${c.id}" >Delete</a>
+            </td>
+        </tr>
+        % endfor
+
+        </tbody>
+    </table>
+
+    <div class="totals">
+        <br>
+        <h5>Sales Tax: ${taxprice}</h5>
+        <hr>
+        <h5><b>Total: ${total}</b> </h5>
+        <br>
+        <a class="butt" href="/catalog/checkout/" type="button" class="btn btn-link nav-item category_nav">Checkout</a>
+        <br><br>
+    </div>
+
+
+
+
+</div>
+</%block>

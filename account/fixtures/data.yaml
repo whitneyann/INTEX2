@@ -1,0 +1,114 @@
+#-   model: contenttypes.contenttype
+#    pk: 101
+#    fields:
+#      app_label: account
+#      model: user2
+
+#-   model: auth.permission
+#    pk: 101
+#    fields:
+#      name: Return a product
+#      content_type: 1
+#      codename: return_product
+
+#-   model: auth.permission
+#    pk: 102
+#    fields:
+#      name: Cancel a product
+#      content_type: 101
+#      codename: cancel_product
+#
+#-   model: auth.permission
+#    pk: 103
+#    fields:
+#      name: Sell a refurbished product
+#      content_type: 101
+#      codename: sell_refurbished_product
+
+
+#-   model: auth.group
+#    pk: 101
+#    fields:
+#        name: group_1
+#        permissions: []
+#
+##-   model: auth.group
+##    pk: 102
+##    fields:
+##        name: Tech Support
+##        permissions: [101, 102]
+##
+##-   model: auth.group
+##    pk: 3
+##    fields:
+##        name: Customer Support
+##        permissions: [101, 102, 103]
+##
+##-   model: auth.group
+##    pk: 4
+##    fields:
+##        name: Salespeople
+##        permissions: [101, 102, 103]
+#
+#
+#-   model: account.user
+#    pk: 101
+#    fields:
+#        password: pbkdf2_sha256$100000$xwfPHf60yFez$2Qtd+ouX/15cJaDqkuHAFZKNYC0cPF05gyufR611Flc=
+#        last_login: 2018-01-29 21:35:45.540489+00:00
+#        is_superuser: true
+#        email: bart@simpsons.com
+#        first_name: Bart
+#        last_name: Simpson
+#        is_staff: true
+#        is_active: true
+#        date_joined: 2018-01-29 21:20:15.228650+00:00
+#        birthdate: null
+#        address: 742 Evergreen Terrace
+#        city: Springfield
+#        state: OR
+#        zipcode: '12312'
+#        groups: []
+#        user_permissions: []
+#
+##-   model: account.user
+##    pk: 102
+##    fields:
+##        password: pbkdf2_sha256$100000$aRsAPekgQ8PA$uYqNNvY6ZDS9FBSyFlxc5mHbMyCfGGWHbGd+e5cbLr0=
+##        last_login: null
+##        is_superuser: false
+##        email: sage@roney.com
+##        first_name: Sage
+##        last_name: Roney
+##        is_staff: false
+##        is_active: true
+##        date_joined: 2018-01-30 22:58:18+00:00
+##        birthdate: null
+##        address: '123 Moose Wilson Road'
+##        city: 'Teton Village'
+##        state: 'WY'
+##        zipcode: '83025'
+##        groups: [1]
+##        user_permissions: [16]
+##
+##-   model: account.user
+##    pk: 103
+##    fields:
+##        password: pbkdf2_sha256$100000$aRsAPekgQ8PA$uYqNNvY6ZDS9FBSyFlxc5mHbMyCfGGWHbGd+e5cbLr0=
+##        last_login: null
+##        is_superuser: false
+##        email: krista@tenney.com
+##        first_name: Krista
+##        last_name: Tenney
+##        is_staff: false
+##        is_active: true
+##        date_joined: 2018-01-30 22:58:18+00:00
+##        birthdate: null
+##        address: ''
+##        city: ''
+##        state: ''
+##        zipcode: ''
+##        groups: [1]
+##        user_permissions: [16]
+
+

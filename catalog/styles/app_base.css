@@ -1,0 +1,43 @@
+.mypadding{
+  margin-left: 6px;
+}
+
+ul{
+  list-style: none;
+
+}
+
+.menu{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.thumb{
+  width: 30%;
+  border: solid 1px gray;
+  margin-left:10px;
+  margin-top: 5px;
+}
+
+.pictures{
+  width:100%;
+}
+
+.menu_hover >li{
+  margin:10px;
+}
+
+.menu_hover > li:hover{
+  font-size: 20px;
+  font-weight: bold;
+
+}
+
+.proName{
+  margin-left:10px;
+}
+
+.recent{
+  font-family: fantasy;
+  color: #A37B73;
+}

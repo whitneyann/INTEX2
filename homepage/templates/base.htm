@@ -1,0 +1,135 @@
+## this is the skeleton of all pages on in this app - it defines the basic html tags
+<%!from catalog import models as cmod%>
+
+<!DOCTYPE html>
+
+
+<html>
+<meta charset="UTF-8">
+<head>
+
+    <title>FOMO</title>
+
+    ## add any site-wide scripts or CSS here; for example, jquery:
+    <!--<script src="${ STATIC_URL }homepage/media/jquery-3.3.1.js"></script>-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="${ STATIC_URL }homepage/media/bootstrap3/js/bootstrap.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link rel="stylesheet" type="text/css" href="${ STATIC_URL }homepage/media/bootstrap3/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="${ STATIC_URL }homepage/media/bootstrap3/css/bootstrap-theme.min.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Amatic SC' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+
+    ## render the static file links with the same name as this template
+    <script src="/django_mako_plus/dmp-common.min.js"></script>
+    ${ django_mako_plus.links(self) }
+
+    ##put in an icon
+    <link id = "icon" rel="shortcut icon" type="image/png" href="${ STATIC_URL }homepage/media/Images/icon.png"/>
+
+
+</head>
+<body>
+<a href="#content" class="skip">Skip to content</a>
+
+<header>
+    <!--Maintenance Message-->
+    <div id="maintenance">
+        <%block name="header_maintenance"></%block>
+        <%block name = "skip"></%block>
+    </div>
+
+
+    <!--Make a navbar-->
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index"><img id="icon" src="${ STATIC_URL }homepage/media/Images/icon.png"/></a>
+        </div>
+          <ul class="nav navbar-nav">
+              <%block name="nav_main">
+                   <li class="${ 'active' if request.dmp.page == 'index' else '' }"><a href="/">Home</a></li>
+                   <li class = "nav item ${ 'active' if request.dmp.page == 'index' and request.dmp.app == 'catalog' else ''}"><a href="/catalog/">Catalog</a></li>
+                   <li class=" ${ 'active' if request.dmp.page == 'about' else '' }"><a href="/about">About Us</a></li>
+                   <li class=" ${'active' if request.dmp.page == 'faq' else '' }"><a href="/faq">FAQ</a></li>
+                   <li class=" ${ 'active' if request.dmp.page == 'contact' else '' }"><a href="/contact">Contact</a></li>
+                   <li class=" ${ 'active' if request.dmp.page == 'terms' else '' }"><a href="/terms">Terms</a></li>
+              </%block>
+        </ul>
+               <ul class="nav navbar-nav navbar-right">
+                    %if request.user.is_authenticated:
+                   <li class=" ${ 'active' if request.dmp.page == 'cart' else '' }">
+                       <a href="/catalog/cart">
+
+                               %if cmod.Order.objects.filter(user = request.user,status='cart').first() is not None:
+                                   ${cmod.Order.objects.filter(user = request.user,status='cart').first().num_items()}
+                                   <span class="glyphicon glyphicon-shopping-cart"></span></a>
+                               %endif
+
+                   </li>
+                        <li class="dropdown">
+                           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                               Welcome ${request.user.first_name} ${request.user.last_name}
+                           <span class="caret"></span></a>
+                           <ul class="dropdown-menu">
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="/account/logout">Log Out</a></li>
+                           </ul>
+                         </li>
+                    %else:
+                        <li><a href="/account/signup">Sign Up</a></li>
+                        <li><a href="/account/login">Login</a></li>
+               </ul>
+                    %endif
+
+      </div>
+    </nav>
+
+
+</header>
+
+<main>
+
+    <div id="top">
+        <%block name="top_center">
+            <!--Page Title-->
+        </%block>
+    </div>
+
+    <div id="middle">
+        <div id="left">
+            <%block name="content_left"></%block>
+        </div>
+
+        <div id="center">
+            <div id="content">
+            <%block name="content_center"></%block>
+            </div>
+        </div>
+
+        <div id="right">
+            <%block name="content_right"></%block>
+        </div>
+    </div>
+
+    <div id="bottom">
+        <%block name="bottom"></%block>
+    </div>
+
+</main>
+
+<div class="text-center">
+    <footer>
+    <%block name="footer">
+        <%! from datetime import datetime %>
+        &copy; Copyright ${ datetime.now().year}. All rights reserved.
+    </%block>
+</footer>
+</div>
+
+
+</body>
+
+
+</html>
