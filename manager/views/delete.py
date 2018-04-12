@@ -7,7 +7,7 @@ from django.views.generic.edit import DeleteView
 @view_function
 def process_request(request):
     try:
-        product = cmod.Product.objects.get(id=request.urlparams[0])
+        product = cmod.Product.objects.get(id=request.dmp.urlparams[0])
     except cmod.Product.DoesNotExist:
         return HttpResponseRedirect('/')
 
